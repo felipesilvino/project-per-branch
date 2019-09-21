@@ -1,0 +1,11 @@
+rootProject.name = "person-service"
+
+def toProject(name, path = null) {
+    include ":$name"
+    if (path) {
+        project(":$name").projectDir = file("$rootDir/$path/$name")
+    }
+}
+
+toProject("person-service", "person-service")
+toProject("person-core", "person-service")
