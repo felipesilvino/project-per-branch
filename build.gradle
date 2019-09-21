@@ -1,3 +1,4 @@
+
 subprojects {
     apply from: "${rootDir}/gradle/libraries.gradle"
     apply from: "${rootDir}/gradle/repositories.gradle"
@@ -13,3 +14,16 @@ subprojects {
 }
 
 apply from: "${rootDir}/gradle/release.gradle"
+
+semanticRelease {
+    releaseBranches {
+        include 'person/master'
+    }
+}
+
+release {
+    // replace the default strategy to add '-FINAL' to the version
+    versionStrategy semanticRelease.releaseStrategy.copyWith(
+        preReleaseStrategy: { it.copyWith(inferredPreRelease: 'FINAL') }
+    )
+}
