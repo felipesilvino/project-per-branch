@@ -1,0 +1,17 @@
+
+repositories {
+
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+
+    maven{
+        name 'confluent'
+        url "http://packages.confluent.io/maven"
+    }
+
+     maven {
+         name 'gradle-plugins'
+         url "https://plugins.gradle.org/m2/"
+    }
+}

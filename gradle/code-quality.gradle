@@ -1,0 +1,88 @@
+buildscript {
+    scriptHandler ->
+        apply from: "$rootDir/gradle/repositories.gradle", to: scriptHandler
+        scriptHandler.dependencies {
+            classpath 'ru.vyarus:gradle-quality-plugin:3.4.0'
+        }
+}
+
+apply plugin: ru.vyarus.gradle.plugin.quality.QualityPlugin
+apply plugin: 'jacoco'
+
+dependencies {
+    compileOnly 'com.google.code.findbugs:annotations:3.0.1'
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+jacoco {
+    toolVersion = "0.7.7.201606060606"
+    reportsDir = file("$buildDir/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("$buildDir/jacoco/html")
+    }
+}
+
+//Comment below line if report is not required during main build. If commented, run 'gradle test jacocoTestReport' to generate report manually
+test {
+    finalizedBy jacocoTestReport
+}
+
+
+quality {
+
+    // Tools versions
+    checkstyleVersion = '8.17'
+    pmdVersion = '5.4.1'
+    findbugsVersion = '3.0.1'
+    codenarcVersion = '0.25.1'
+
+    // Enable/disable tools
+
+    checkstyle = true
+    pmd = false
+    findbugs = true
+    codenarc = true
+
+    /**
+     * The analysis effort level. The value specified should be one of min, default, or max.
+     * Higher levels increase precision and find more bugs at the expense of running time and
+     * memory consumption. Default is 'max'.
+     */
+    findbugsEffort = 'max'
+
+    /**
+     * The priority threshold for reporting bugs. If set to low, all bugs are reported.
+     * If set to medium, medium and high priority bugs are reported.
+     * If set to high, only high priority bugs are reported. Default is 'medium'.
+     */
+    findbugsLevel = 'medium'
+
+    /**
+     * Javac lint options to show compiler warnings, not visible by default.
+     * Options will be added as -Xlint:option
+     * Full list of options: http://docs.oracle.com/javase/8/docs/technotes/tools/windows/javac.html#BHCJCABJ
+     */
+    lintOptions = ['all']
+
+    /**
+     * Strict quality leads to build fail on any violation found. If disabled, all violation
+     * are just printed to console.
+     */
+    strict = true
+
+    /**
+     * Source sets to apply checks on.
+     * Default is [sourceSets.main] to apply only for project sources, excluding tests.
+     */
+    //sourceSets = [sourceSets.main]
+
+    /**
+     * User configuration files directory. Files in this directory will be used instead of default (bundled) configs.
+     */
+    configDir = "$rootDir/gradle/config/quality"
+}

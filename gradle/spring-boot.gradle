@@ -1,0 +1,29 @@
+buildscript {
+    scriptHandler ->
+        apply from: "$rootDir/gradle/repositories.gradle", to: scriptHandler
+        scriptHandler.dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+}
+
+apply plugin: org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+task pathingJar(type: Jar) {
+    dependsOn configurations.runtime
+    doFirst {
+        manifest {
+            attributes "Class-Path": configurations.runtime.files.collect {
+                it.toURL().toString().replaceFirst('/file:/+/', '/')
+            }.join(' ')
+        }
+    }
+}
+
+
+bootRun {
+    dependsOn pathingJar
+    doFirst {
+        classpath = files(sourceSets.main.output.files, pathingJar.archiveFile.get().asFile)
+    }
+    systemProperty 'spring.profiles.active', System.properties['spring.profiles.active']
+}

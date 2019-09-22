@@ -1,0 +1,73 @@
+
+/**
+ *
+ * The following block should be used to declare dependencies whose version should be controlled by
+ * spring-dependency-management-plugin based on the spring-boot version and spring-cloud version (release train name)
+ *
+ *  exception: oracle jdbc driver
+ */
+
+ext.database = [
+        liquibase : "org.liquibase:liquibase-core",
+        postgre   : "org.postgresql:postgresql",
+        h2        : "com.h2database:h2"
+]
+
+ext.junit5 = [
+        api   : "org.junit.jupiter:junit-jupiter-api",
+        engine: "org.junit.jupiter:junit-jupiter-engine"
+]
+
+ext.spring = [
+        boot    : [
+                starter: "org.springframework.boot:spring-boot-starter",
+                test   : "org.springframework.boot:spring-boot-starter-test",
+                jdbc   : "org.springframework.boot:spring-boot-starter-jdbc",
+                jpa    : "org.springframework.boot:spring-boot-starter-data-jpa",
+                hateoas: "org.springframework.boot:spring-boot-starter-hateoas",
+                web    : "org.springframework.boot:spring-boot-starter-web",
+                json   : "org.springframework.boot:spring-boot-starter-json",
+        ],
+        cloud   : [
+                feign: "org.springframework.cloud:spring-cloud-starter-openfeign",
+                discovery: [
+                        zookeeper: "org.springframework.cloud:spring-cloud-starter-zookeeper-discovery"
+                ],
+                zuul: "org.springframework.cloud:spring-cloud-starter-netflix-zuul"
+        ],
+        restdocs: [
+                mockmvc    : "org.springframework.restdocs:spring-restdocs-mockmvc",
+                asciidoctor: "org.springframework.restdocs:spring-restdocs-asciidoctor"
+        ],
+        kafka: "org.springframework.kafka:spring-kafka"
+]
+
+ext.assertj = [
+        core: "org.assertj:assertj-core"
+]
+
+ext.jayway = [
+        jsonpath: "com.jayway.jsonpath:json-path"
+]
+
+
+/**
+ *
+ * The following block should be used to declare dependencies whose version is not controlled by spring.
+ * Please, do not duplicate dependencies already provided by through spring boot and spring cloud.
+ *
+ */
+
+ext.util = [
+        modelMapper     : "org.modelmapper:modelmapper:${modelMapperVersion}",
+]
+
+ext.apache = [
+        zookeeper: "org.apache.zookeeper:zookeeper:${zookeeperVersion}"
+]
+
+ext.confluent = [
+        avro: [
+                serializer:  "io.confluent:kafka-avro-serializer:${confluentPlatformVersion}"
+        ]
+]

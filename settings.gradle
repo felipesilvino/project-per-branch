@@ -1,0 +1,6 @@
+rootProject.name = "service-name"
+
+apply from: "${rootDir}/gradle/versioning.gradle"
+
+include ":service-service"
+include ":service-core"

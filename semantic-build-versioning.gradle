@@ -1,0 +1,9 @@
+startingVersion = '1.0.0'
+tagPrefix = 'service-name@'
+tagPattern = ~/^service-name@/
+
+autobump {
+    majorPattern = ~/(?m)^\[breaking-change:\]$/
+    minorPattern = ~/(?m)^\[feat:\]$/
+    patchPattern = ~/(?m)^\[fix:\]$/
+}
