@@ -1,0 +1,6 @@
+rootProject.name = "beneficiary"
+
+apply from: "${rootDir}/gradle/versioning.gradle"
+
+include ":beneficiary-service"
+include ":beneficiary-core"

@@ -1,0 +1,9 @@
+dependencies {
+    compile (spring.cloud.discovery.zookeeper) {
+        exclude group: 'org.apache.zookeeper', module: 'zookeeper'
+    }
+
+    compile (apache.zookeeper) {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+}

@@ -1,0 +1,9 @@
+startingVersion = '1.0.0'
+tagPrefix = 'beneficiary@'
+tagPattern = ~/^beneficiary@/
+
+autobump {
+    majorPattern = ~/(?m)^\[breaking-change:\]$/
+    minorPattern = ~/(?m)^\[feat:\]$/
+    patchPattern = ~/(?m)^\[fix:\]$/
+}
