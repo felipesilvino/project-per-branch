@@ -12,7 +12,7 @@ subprojects {
     //apply from: "${rootDir}/gradle/code-quality.gradle"
     task printDependenciesTree(type: DependencyReportTask) {}
 
-    group 'com.felipesilvino.project.per.branch'
+    group 'com.felipesilvino.project-per-branch.person'
 }
 
 tag {
@@ -21,17 +21,3 @@ tag {
     }
 }
 
-//apply from: "${rootDir}/gradle/release.gradle"
-//
-//semanticRelease {
-//    releaseBranches {
-//        include 'person/master'
-//    }
-//}
-//
-//release {
-//    // replace the default strategy to add '-FINAL' to the version
-//    versionStrategy semanticRelease.releaseStrategy.copyWith(
-//        preReleaseStrategy: { it.copyWith(inferredPreRelease: 'FINAL') }
-//    )
-//}
