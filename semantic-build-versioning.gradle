@@ -3,7 +3,9 @@ tagPrefix = 'beneficiary@'
 tagPattern = ~/^beneficiary@/
 
 autobump {
-    majorPattern = ~/(?m)^\[breaking-change:\]$/
-    minorPattern = ~/(?m)^\[feat:\]$/
-    patchPattern = ~/(?m)^\[fix:\]$/
+    majorPattern = ~/(?m)^\[bump-major\]$/
+    minorPattern = ~/(?m)^\[bump-minor\]$/
+    patchPattern = ~/(?m)^\[bump-patch\]$/
+    newPreReleasePattern = ~/(?m)^\[make-new-pre-release\]$/
+    promoteToReleasePattern = ~/(?m)^\[promote-to-release\]$/
 }
