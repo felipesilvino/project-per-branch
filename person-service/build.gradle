@@ -1,0 +1,7 @@
+apply from: "${rootDir}/gradle/spring-boot.gradle"
+apply from: "${rootDir}/gradle/service-discovery.gradle"
+apply from: "${rootDir}/gradle/service-monitoring.gradle"
+
+dependencies {
+    runtime (database.postgre) {}
+}

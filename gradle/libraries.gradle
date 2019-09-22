@@ -9,7 +9,7 @@
 
 ext.database = [
         liquibase : "org.liquibase:liquibase-core",
-        postgreSQL: "org.postgresql:postgresql",
+        postgre   : "org.postgresql:postgresql",
         h2        : "com.h2database:h2"
 ]
 

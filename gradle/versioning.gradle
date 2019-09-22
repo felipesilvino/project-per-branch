@@ -1,0 +1,8 @@
+buildscript { scriptHandler ->
+    apply from: "$rootDir/gradle/repositories.gradle", to: scriptHandler
+    scriptHandler.dependencies {
+        classpath 'gradle.plugin.net.vivin:gradle-semantic-build-versioning:4.0.0'
+    }
+}
+
+apply plugin: net.vivin.gradle.versioning.SemanticBuildVersioningPlugin

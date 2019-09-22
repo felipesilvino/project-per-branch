@@ -1,0 +1,11 @@
+startingVersion = '1.0.0'
+tagPrefix = 'person@'
+tagPattern = ~/^person@/
+
+autobump {
+    majorPattern = ~/(?m)^\[bump-major\]$/
+    minorPattern = ~/(?m)^\[bump-minor\]$/
+    patchPattern = ~/(?m)^\[bump-patch\]$/
+    newPreReleasePattern = ~/(?m)^\[make-new-pre-release\]$/
+    promoteToReleasePattern = ~/(?m)^\[promote-to-release\]$/
+}

@@ -1,11 +1,6 @@
-rootProject.name = "person-service"
+rootProject.name = "person"
 
-def toProject(name, path = null) {
-    include ":$name"
-    if (path) {
-        project(":$name").projectDir = file("$rootDir/$path/$name")
-    }
-}
+apply from: "${rootDir}/gradle/versioning.gradle"
 
-toProject("person-service", "person-service")
-toProject("person-core", "person-service")
+include ":person-service"
+include ":person-core"
