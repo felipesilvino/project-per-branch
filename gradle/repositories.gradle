@@ -2,8 +2,8 @@
 repositories {
 
     mavenLocal()
-    jcenter()
     mavenCentral()
+    jcenter()
 
     maven{
         name 'confluent'

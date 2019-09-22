@@ -59,7 +59,7 @@ ext.jayway = [
  */
 
 ext.util = [
-        modelMapper     : "org.modelmapper:modelmapper:${modelMapperVersion}",
+        modelMapper: "org.modelmapper:modelmapper:${modelMapperVersion}",
 ]
 
 ext.apache = [
@@ -69,5 +69,13 @@ ext.apache = [
 ext.confluent = [
         avro: [
                 serializer:  "io.confluent:kafka-avro-serializer:${confluentPlatformVersion}"
+        ]
+]
+
+ext.felipesilvino = [
+        ppb: [
+                person: [
+                        core: "com.felipesilvino.project-per-branch.person:person-core:${personVersion}"
+                ]
         ]
 ]
