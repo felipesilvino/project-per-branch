@@ -3,9 +3,9 @@ tagPrefix = 'person@'
 tagPattern = ~/^person@/
 
 autobump {
-    majorPattern = ~/(?m)^\[breaking-change:\]$/
-    minorPattern = ~/(?m)^\[feat:|feature:\]$/
-    patchPattern = ~/(?m)^\[fix:\]$/
-    newPreReleasePattern = ~/(?m)^\[make-new-pre-release\]$/
-    promoteToReleasePattern = ~/(?m)^\[promote-to-release\]$/
+    majorPattern = ~/(?m)^breaking-change\(*[A-Za-z0-9_].*\): /
+    minorPattern = ~/(?m)^feat\(*[A-Za-z0-9_].*\): /
+    patchPattern = ~/(?m)^fix\(*[A-Za-z0-9_].*\): /
+    newPreReleasePattern = ~/(?m)^pre-release\(*[A-Za-z0-9_].*\): /
+    promoteToReleasePattern = ~/(?m)^promote\(*[A-Za-z0-9_].*\): /
 }
